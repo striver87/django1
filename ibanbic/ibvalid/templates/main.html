@@ -1,0 +1,18 @@
+<form action="/validate/" method="POST">
+{% csrf_token %}
+<label for="iban">IBAN:</label>&nbsp;<input type="text" name='iban' value="{{ iban }}"/> 
+{% if iban_ok %}
+	<span style="color:green;"> {{ iban_message }} </span>
+{% else %}
+	<span style="color:red;font-weight:bold;"> {{ iban_message }} </span>
+{% endif %}
+<br />
+<label for="bic">BIC:</label>&nbsp;<input type="text" name="bic" value="{{ bic }}"/>
+{% if bic_ok %}
+	<span style="color:green;"> {{ bic_message }} </span>
+{% else %}
+	<span style="color:red;font-weight:bold;"> {{ bic_message }} </span>
+{% endif %}
+<br />
+<input type="submit" value="Validate" />
+</form>
